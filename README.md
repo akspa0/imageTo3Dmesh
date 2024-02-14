@@ -2,7 +2,7 @@
 
 This script converts input images into 3D mesh data represented in JSON format. It generates a mesh by dividing the image into chunks, creating a point cloud for each chunk, and then triangulating the point cloud to form the mesh.
 
-The intended use for this script is to take WoW minimaps or WoW world map images, and convert them into 3D meshes. 
+The intended use for this script is to take WoW minimaps [currently broken] or WoW world map images [working], and convert them into 3D meshes. 
 The ideal settings for my tests are as follows: --z_scale 0.12 --flip_y --flip_z 
 
 The #5 example shows you how to format the commandline such that you will get a single JSON file with every bit of useful data out of yor input, and provide you a decent low-quality example that shouldn't take too long to process. The #4 example will take longer to process, but will be of double resolution (original input resolution).
