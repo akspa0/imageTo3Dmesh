@@ -2,6 +2,11 @@
 
 This script converts input images into 3D mesh data represented in JSON format. It generates a mesh by dividing the image into chunks, creating a point cloud for each chunk, and then triangulating the point cloud to form the mesh.
 
+The intended use for this script is to take WoW minimaps or WoW world map images, and convert them into 3D meshes. 
+The ideal settings for my tests are as follows: --z_scale 0.12 --flip_y --flip_z 
+
+The #5 example shows you how to format the commandline such that you will get a single JSON file with every bit of useful data out of yor input, and provide you a decent low-quality example that shouldn't take too long to process. The #4 example will take longer to process, but will be of double resolution (original input resolution).
+
 ## Requirements
 
 - Python 3.x
@@ -44,25 +49,38 @@ This script converts input images into 3D mesh data represented in JSON format. 
 1. Convert a single image:
 
    ```
-   python image_to_3d_mesh.py input_image.png output_directory --export_processed_image
+   python 3dM111.py input_image.png output_directory --export_processed_image
    ```
 
 2. Convert all images in a directory:
 
    ```
-   python image_to_3d_mesh.py input_directory output_directory --flip_x --flip_z
+   python 3dM111.py input_directory output_directory --flip_x --flip_z
    ```
 
 3. Convert images with specific options:
 
    ```
-   python image_to_3d_mesh.py input_directory output_directory --downsample --positive_z_only
+   python 3dM111.py input_directory output_directory --downsample --positive_z_only
+   ```
+   
+4. Convert WoW minimaps and world maps with these specific options [Best Quality]:
+
+   ```
+   python 3dM111.py input_image.png output_directory --z_scale 0.12 --flip_y --flip_z
    ```
 
+5. Convert WoW minimaps and world maps with these specific options [Worst Quality]:
+
+   ```
+   python 3dM111.py input_image.png output_directory --z_scale 0.12 --flip_y --flip_z --downsample
+   ```
+   
 ## Notes
 
 - Ensure input images are in a format supported by OpenCV (e.g., PNG, JPEG).
 - Adjust options such as chunk size, overlap, and coordinate flipping based on the desired output.
+- Outputs will either be in chunks that the script will automatically create, or will take pre-chunked minimap tiles.
 
 ---
 
@@ -73,7 +91,7 @@ This script converts JSON mesh data into various 3D mesh formats using the Trime
 ## Usage
 
 ```bash
-python mesh_converter.py input_json output_dir
+python meshConverter11.py input_json output_dir
 ```
 
 - `input_json`: Path to the input JSON file containing mesh data.
@@ -95,11 +113,7 @@ pip install trimesh
 ## Example
 
 ```bash
-python mesh_converter.py mesh_data.json exported_meshes
+python meshConverter11.py mesh_data.json exported_meshes
 ```
 
 This will convert the mesh data from `mesh_data.json` into OBJ, STL (ASCII), and PLY formats, saving them in the `exported_meshes` directory.
-
-## License
-
-This script is released under the MIT License. See `LICENSE` for more information.
