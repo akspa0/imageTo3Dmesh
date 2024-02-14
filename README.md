@@ -23,10 +23,10 @@ The #5 example shows you how to format the commandline such that you will get a 
    pip install opencv-python numpy scipy tqdm
    ```
 
-2. **Running the Script**: Run the script `image_to_3d_mesh.py` with the following command-line arguments:
+2. **Running the Script**: Run the script `3dM111.py` with the following command-line arguments:
 
    ```
-   python image_to_3d_mesh.py input_path output_dir [--options]
+   python 3dM111.py input_path output_dir [--options]
    ```
 
    - `input_path`: Path to the input image or directory containing images.
